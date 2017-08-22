@@ -1,5 +1,5 @@
 <header class="site-header fixed-top">
-  <nav class="navbar navbar-toggleable-md">
+  <nav class="navbar navbar-toggleable-md navbar-inverse bg-inverse">
     <button class="hamburger hamburger--squeeze navbar-toggler hidden-lg-up" type="button"data-toggle="collapse" data-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="hamburger-box">
             <span class="hamburger-inner"></span>
@@ -9,7 +9,32 @@
 
     <div class="collapse navbar-collapse" id="mainNav">
       <ul class="navbar-nav ml-auto">
-        <li class="nav-item active">
+        <li class="nav-item">
+          <a class="nav-link" href="/#home">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/#tech">Tech</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/#roadmap">Roadmap</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/#faqs">FAQs</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/#team">Team</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/#news">News</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/#events">Events</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/#info">Info</a>
+        </li>
+        {% comment %}
+        <li class="nav-item">
           <a class="nav-link" href="{{site.links.blog}}">Blog</a>
         </li>
         <li class="nav-item">
@@ -46,6 +71,7 @@
         <li class="nav-item">
           <a class="nav-link" href="mailto:info@zensystem.io">Contact Us</a>
         </li>
+        {% endcomment %}
       </ul>
     </div>
   </nav>

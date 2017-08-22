@@ -1,18 +1,18 @@
 var header = $('.site-header');
 
-$(function() {
-    header.headroom({
-        "tolerance": 5,
-        "offset": 40,
-        "classes": {
-            "initial": "animated",
-            "pinned": "slideDown",
-            "unpinned": "slideUp",
-            "top": "headroom--top",
-            "notTop": "headroom--not-top"
-        }
-    });
-});
+// $(function() {
+//     header.headroom({
+//         "tolerance": 5,
+//         "offset": 40,
+//         "classes": {
+//             "initial": "animated",
+//             "pinned": "slideDown",
+//             "unpinned": "slideUp",
+//             "top": "headroom--top",
+//             "notTop": "headroom--not-top"
+//         }
+//     });
+// });
 
 // Smooth page scroll to an anchor on the same page
 $(function() {
@@ -126,36 +126,38 @@ $.ajax({
 
 
 var listTemplate = document.getElementById("template-blog-post");
-var templateHtml = listTemplate.innerHTML;
+if (listTemplate) {
+  var templateHtml = listTemplate.innerHTML;
 
-$.ajax({
-  type: "GET",
-  url: "https://blog.zensystem.io/wp-json/wp/v2/posts",
-  dataType: "json",
-  data: {
-    categories_exclude: [66, 52]
-  },
-  success: function(dataJSON) {
-    var dataObject = dataJSON;
-    document.getElementById("blogPosts").innerHTML = listCreateHtml(dataJSON);
-  }
-});
-
-// Function to generate and returns the HTML.
-// Accepts an object as a parameter
-function listCreateHtml(dataObject) {
-  var listHtml = "";
-
-  for (key in dataObject) {
-    var numberOfPosts = 3;
-    if (key < numberOfPosts) {
-      listHtml += templateHtml.replace(/{{link}}/g, dataObject[key].link)
-                              .replace(/{{title}}/g, dataObject[key].title.rendered)
-                              .replace(/{{excerpt}}/g, dataObject[key].excerpt.rendered);
-    } else {
-
+  $.ajax({
+    type: "GET",
+    url: "https://blog.zensystem.io/wp-json/wp/v2/posts",
+    dataType: "json",
+    data: {
+      categories_exclude: [66, 52]
+    },
+    success: function(dataJSON) {
+      var dataObject = dataJSON;
+      document.getElementById("blogPosts").innerHTML = listCreateHtml(dataJSON);
     }
-  }
+  });
 
-  return listHtml;
+  // Function to generate and returns the HTML.
+  // Accepts an object as a parameter
+  function listCreateHtml(dataObject) {
+    var listHtml = "";
+
+    for (key in dataObject) {
+      var numberOfPosts = 3;
+      if (key < numberOfPosts) {
+        listHtml += templateHtml.replace(/{{link}}/g, dataObject[key].link)
+                                .replace(/{{title}}/g, dataObject[key].title.rendered)
+                                .replace(/{{excerpt}}/g, dataObject[key].excerpt.rendered);
+      } else {
+
+      }
+    }
+
+    return listHtml;
+  }
 }
